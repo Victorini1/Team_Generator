@@ -1,9 +1,10 @@
+const fs = require('fs')
 const inquirer = require('inquirer');
 const Employee = require('./lib/employee')
 const Manager = require('./lib/manager')
 const Engineer = require('./lib/engineer')
 const Intern = require('./lib/intern')
-const allData = [];
+const allData = {managers: [], engineers: [], interns: []};
 
 // // Team Builder needs questions to identify role, and roles determine which follow up questions to ask
 function buildTeam(){
@@ -68,11 +69,11 @@ function managerQuestions(employee){
             const manager = new Manager(employee.empName, employee.id, employee.role, employee.email, response.officeNumber)
             console.log(manager);
             if (response.newMember == true){
-                allData.push(manager)
+                allData.managers.push(manager)
                 return buildTeam();
             } else {
-                allData.push(manager)
-                getHTML(allData)
+                allData.managers.push(manager)
+                renderHTML(allData)
             }
         })
         }
@@ -94,11 +95,11 @@ function engQuestions(employee){
             const engineer = new Engineer(employee.empName, employee.id, employee.role, employee.email, response.github)
             console.log(engineer);
             if (response.newMember == true){
-                allData.push(engineer)
+                allData.engineers.push(engineer)
                 return buildTeam();
             } else {
-                allData.push(engineer)
-                getHTML(allData)
+                allData.engineers.push(engineer)
+                renderHTML(allData)
             }
         })
         }
@@ -120,16 +121,20 @@ function intQuestions(employee){
             const intern = new Intern(employee.empName, employee.id, employee.role, employee.email, response.school)
             console.log(intern);
             if (response.newMember == true){
-                allData.push(intern)
+                allData.interns.push(intern)
                 return buildTeam();
             } else {
-                allData.push(intern)
+                allData.interns.push(intern)
                 console.log(allData)
-                buildHTML(allData)
+                renderHTML(allData)
                 
             }
         })
         }
+
+function renderHTML(allData){
+    fs.writeFile('./dist/index.html', buildHTML(allData), () =>  console.log('Good luck to your team!')  )
+}
 
 function buildHTML(allData){
     return `<!DOCTYPE html>
@@ -156,9 +161,15 @@ function buildHTML(allData){
         <main>
             <div class="container">
             <div class="row">
-            ${allData.forEach(Manager => getHTML(Manager))}
-            ${allData.forEach(Engineer => getHTML(Engineer))}
-            ${allData.forEach(Intern => getHTML(Intern))}
+            ${allData.managers.map(managers =>{
+                return managers.getHTML()
+            })}
+            ${allData.engineers.map(engineers =>{ 
+                return engineers.getHTML()
+            } )}
+            ${allData.interns.map(interns => {
+                return interns.getHTML()
+            })}
             </div>         
     </div>
     </main>
