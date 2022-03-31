@@ -13,6 +13,7 @@
   Use of Inquirer and Jest is required to ask the informational questions and run the tests respectively.
   ## Walkthrough Video
   
+  https://drive.google.com/file/d/1Yl3Fv_xdMVIJ8na2HLxSx65HgmvwX433/view?usp=sharing
 
   ## Testing
   The tests are located in the tests folder, and will run through each of the classes to validate they are gathering data correctly. 
