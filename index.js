@@ -67,7 +67,7 @@ function managerQuestions(employee){
     ])
         .then( response =>{
             const manager = new Manager(employee.empName, employee.id, employee.role, employee.email, response.officeNumber)
-            console.log(manager);
+            // console.log(manager);
             if (response.newMember == true){
                 allData.managers.push(manager)
                 return buildTeam();
@@ -93,7 +93,7 @@ function engQuestions(employee){
     ])
         .then( response =>{
             const engineer = new Engineer(employee.empName, employee.id, employee.role, employee.email, response.github)
-            console.log(engineer);
+            // console.log(engineer);
             if (response.newMember == true){
                 allData.engineers.push(engineer)
                 return buildTeam();
@@ -119,13 +119,13 @@ function intQuestions(employee){
     ])
         .then( response =>{
             const intern = new Intern(employee.empName, employee.id, employee.role, employee.email, response.school)
-            console.log(intern);
+            // console.log(intern);
             if (response.newMember == true){
                 allData.interns.push(intern)
                 return buildTeam();
             } else {
                 allData.interns.push(intern)
-                console.log(allData)
+                // console.log(allData)
                 renderHTML(allData)
                 
             }
@@ -145,22 +145,25 @@ function buildHTML(allData){
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <!-- CSS only -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>    
+    <link href="https://fonts.googleapis.com/css2?family=Bungee+Inline&family=Roboto+Condensed&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="./style.css">
         <title>Team Builder App</title>
     </head>
     <body>
         <header>
-            <nav class="navbar sticky-top navbar-dark bg-primary">
+            <nav id="navbar" class="navbar sticky-top justify-content-center">
                 <a class="navbar-brand" href="#!">Team Builder</a>
               </nav> 
               <div class="jumbotron">
-                <h1 class="display-3">Let's Get Started</h1>
-                <p class="lead">Your team will output Below</p>
+                <h1 class="display-3 d-flex justify-content-center">Let's Get Started</h1>
+                <p class="lead d-flex justify-content-center">Your team will output Below</p>
               </div>     
         </header>
         <main>
             <div class="container">
-            <div class="row">
+            <div class="row d-flex justify-content-center">
             ${allData.managers.map(managers =>{
                 return managers.getHTML()
             })}
@@ -173,9 +176,12 @@ function buildHTML(allData){
             </div>         
     </div>
     </main>
-
     
+    <footer>
+        <div class="navbar navbar-fixed-bottom"></div>       
+    </footer>
 </body>
+<script src="https://kit.fontawesome.com/4737c1ae12.js" crossorigin="anonymous"></script>
 </html>`
 }
 

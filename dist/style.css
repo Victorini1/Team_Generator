@@ -1,0 +1,68 @@
+*{
+    font-family: 'Bungee Inline', cursive;
+    font-family: 'Roboto Condensed', sans-serif;
+}
+
+#navbar{
+    background-color: #EE7A53;
+    padding: 30px;
+}
+
+#navbar a{
+    color: white;
+    font-size: 36px;
+    font-weight: 700;
+}
+
+.jumbotron{
+    padding: 30px;
+    background-color:#EDC9BB ;
+}
+.card{
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+#managercard .card-header{
+    padding-top: 25px;
+    padding-bottom: 25px;
+    background-color: #49253C; 
+    color: white;
+}
+
+#managercard .card-body{
+    background-color: #f1ebf9;
+}
+
+#engineercard .card-header{
+    padding-top: 25px;
+    padding-bottom: 25px;
+    background-color: #94498D; 
+    color: white;
+}
+
+#engineercard .card-body{
+    background-color: #dfe0ec;
+}
+#interncard .card-header{
+    padding-top: 25px;
+    padding-bottom: 25px;
+    background-color: #94498D; 
+    color: white;
+}
+
+#interncard .card-body{
+    background-color: #dfe0ec;
+}
+
+body{
+    background-color: #ECFAF2;
+    margin-bottom: 0px;
+}
+footer{
+    background-color:#EE7A53 ;
+    margin-bottom: 0px;
+    margin-top: 20%;
+    padding-top: 10%;
+    padding-bottom: 20%;
+}
